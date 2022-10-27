@@ -12,7 +12,7 @@ class SolarSystemsController extends Controller
         return solar_systems::all();
     }
 
-    public function store(Request $request, $id)
+    public function store(Request $request, $galaxy_id)
     {
         $request->validate([
             'name' => 'required|',
@@ -23,7 +23,7 @@ class SolarSystemsController extends Controller
 
         $data = $request->all();
 
-        $data['galaxyId'] = $id;
+        $data['galaxyId'] = $galaxy_id;
 
         solar_systems::query()->create($data);
 
