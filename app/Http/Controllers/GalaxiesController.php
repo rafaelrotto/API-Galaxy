@@ -15,6 +15,12 @@ class GalaxiesController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:255|string',
+            'dimension' => 'numeric',
+            'number_of_solar_systems' => 'numeric',
+        ]);
+
         $data = $request->all();
 
         galaxies::query()->create($data);
