@@ -32,4 +32,8 @@ class SolarSystemsController extends Controller
 
         return $data;
     }
+
+    public function destroy($id){
+        solar_systems::destroy($id);
+    }
 }

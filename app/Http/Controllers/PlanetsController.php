@@ -34,4 +34,8 @@ class PlanetsController extends Controller
 
         return $data;
     }
+
+    public function destroy($id){
+        planets::destroy($id);
+    }
 }

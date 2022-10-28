@@ -30,4 +30,8 @@ class GalaxiesController extends Controller
 
         return $data;
     }
+
+    public function destroy($id){
+        galaxies::destroy($id);
+    }
 }

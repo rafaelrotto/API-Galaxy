@@ -24,10 +24,12 @@ class CreatePlanetsTable extends Migration
             $table->string('light_years_from_the_main_star');
             $table->foreign('solarSystemId')
                 ->references('id')
-                ->on('solar_systems');
+                ->on('solar_systems')
+                ->onDelete('cascade');
             $table->foreign('galaxyId')
                 ->references('id')
-                ->on('galaxies');
+                ->on('galaxies')
+                ->onDelete('cascade');
         });
     }
 

@@ -23,7 +23,8 @@ class CreateSolarSystemsTable extends Migration
             $table->string('main_star');
             $table->foreign('galaxyId')
                 ->references('id')
-                ->on('galaxies');
+                ->on('galaxies')
+                ->onDelete('cascade');
         });
     }
 
