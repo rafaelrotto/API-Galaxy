@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GalaxiesResource;
 use App\Models\galaxies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +11,9 @@ class GalaxiesController extends Controller
 {
     public function index()
     {
-        return galaxies::all();
+        $galaxies = galaxies::all();
+        return GalaxiesResource::collection($galaxies);
+
     }
 
     public function store(Request $request)

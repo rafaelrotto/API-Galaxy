@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SolarSystemsResource;
 use App\Models\solar_systems;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,9 @@ class SolarSystemsController extends Controller
 {
     public function index()
     {
-        return solar_systems::all();
+        $solar_system = solar_systems::all();
+
+        return SolarSystemsResource::collection($solar_system);
     }
 
     public function store(Request $request, $galaxy_id)

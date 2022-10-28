@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PlanetsResource;
 use App\Models\planets;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,9 @@ class PlanetsController extends Controller
 {
     public function index()
     {
-        return planets::all();
+        $planets = planets::all();
+
+        return PlanetsResource::collection($planets);
     }
 
     public function store(Request $request, $galaxy_id, $solar_system_id)

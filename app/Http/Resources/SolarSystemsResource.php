@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class SolarSystemsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,7 +16,9 @@ class UserResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            'email' => $this->email,
+            'dimension' => $this->dimension,
+            'number_of_planets' => $this->number_of_planets,
+            'main_star' => $this->main_star
         ];
     }
 }
