@@ -33,6 +33,19 @@ class SolarSystemsController extends Controller
         return $data;
     }
 
+    public function search(Request $request) {
+
+        $data = $request->get('data');
+
+        $solar_systems = solar_systems::where('name', 'like', '%' . $data . '%')
+                         ->orWhere('dimension', 'like', '%' . $data . '%')
+                         ->orWhere('number_of_planets', 'like', '%' . $data . '%')
+                         ->orWhere('main_star', 'like', '%' . $data . '%')
+                         ->get();
+
+        return SolarSystemsResource::collection($solar_systems); 
+    }
+
     public function update(Request $request, $id){
         solar_systems::find($id)->update([
             'name' => $request->name,

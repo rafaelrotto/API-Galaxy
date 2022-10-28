@@ -32,6 +32,18 @@ class GalaxiesController extends Controller
         return $data;
     }
 
+    public function search(Request $request) {
+
+        $data = $request->get('data');
+
+        $galaxies = galaxies::where('name', 'like', '%' . $data . '%')
+                         ->orWhere('dimension', 'like', '%' . $data . '%')
+                         ->orWhere('number_of_solar_systems', 'like', '%' . $data . '%')
+                         ->get();
+
+        return GalaxiesResource::collection($galaxies);    
+    }
+
     public function update(Request $request, $id){
         galaxies::find($id)->update([
             'name' => $request->name,

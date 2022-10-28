@@ -35,6 +35,19 @@ class PlanetsController extends Controller
         return $data;
     }
 
+    public function search(Request $request) {
+
+        $data = $request->get('data');
+
+        $planets = planets::where('name', 'like', '%' . $data . '%')
+                         ->orWhere('dimension', 'like', '%' . $data . '%')
+                         ->orWhere('number_of_moons', 'like', '%' . $data . '%')
+                         ->orWhere('light_years_from_the_main_star', 'like', '%' . $data . '%')
+                         ->get();
+
+        return PlanetsResource::collection($planets);   
+    }
+
     public function update(Request $request, $id){
         planets::find($id)->update([
             'name' => $request->name,

@@ -27,14 +27,17 @@ Route::post('login', [LoginController::class, 'authenticate']);
 Route::get('galaxies', [GalaxiesController::class, 'index']);
 Route::post('galaxies', [GalaxiesController::class, 'store']);
 Route::put('galaxies/{id}', [GalaxiesController::class, 'update']);
+Route::get('galaxies/search', [GalaxiesController::class, 'search']);
 Route::delete('galaxies/{id}', [GalaxiesController::class, 'destroy']);
 
 Route::get('solar-systems', [SolarSystemsController::class, 'index']);
 Route::post('galaxies/{galaxyId}/solar-systems', [SolarSystemsController::class, 'store']);
 Route::put('solar-systems/{id}', [SolarSystemsController::class, 'update']);
+Route::get('solar-systems/search', [SolarSystemsController::class, 'search']);
 Route::delete('solar-systems/{id}', [SolarSystemsController::class, 'destroy']);
 
 Route::get('planets', [PlanetsController::class, 'index']);
 Route::post('galaxies/{galaxyId}/solar-systems/{solarSystemId}/planets', [PlanetsController::class, 'store']);
 Route::put('planets/{id}', [PlanetsController::class, 'update']);
+Route::get('planets/search', [PlanetsController::class, 'search']);
 Route::delete('planets/{id}', [PlanetsController::class, 'destroy']);
