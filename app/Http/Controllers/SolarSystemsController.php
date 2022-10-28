@@ -33,6 +33,15 @@ class SolarSystemsController extends Controller
         return $data;
     }
 
+    public function update(Request $request, $id){
+        solar_systems::find($id)->update([
+            'name' => $request->name,
+            'dimension' => $request->dimension,
+            'number_of_planets' => $request->number_of_planets,
+            'main_star' => $request->main_star
+        ]);
+    }
+
     public function destroy($id){
         solar_systems::destroy($id);
     }

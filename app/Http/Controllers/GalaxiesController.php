@@ -6,6 +6,7 @@ use App\Http\Resources\GalaxiesResource;
 use App\Models\galaxies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redis;
 
 class GalaxiesController extends Controller
 {
@@ -29,6 +30,14 @@ class GalaxiesController extends Controller
         galaxies::query()->create($data);
 
         return $data;
+    }
+
+    public function update(Request $request, $id){
+        galaxies::find($id)->update([
+            'name' => $request->name,
+            'dimension' => $request->dimension,
+            'number_of_solar_systems' => $request->number_of_solar_systems
+        ]);
     }
 
     public function destroy($id){

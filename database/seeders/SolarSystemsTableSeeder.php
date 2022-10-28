@@ -15,7 +15,7 @@ class SolarSystemsTableSeeder extends Seeder
     public function run()
     {
         solar_systems::create([
-            'galaxyId' => 1,
+            'galaxyId' => '1',
             'name' => 'AED-5609',
             'dimension' => '95431651971149',
             'number_of_planets' => '9984944984',

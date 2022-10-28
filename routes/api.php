@@ -19,19 +19,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('register', [RegisterController::class, 'index']);
+Route::get('users', [RegisterController::class, 'index']);
 Route::post('register', [RegisterController::class, 'store']);
 
 Route::post('login', [LoginController::class, 'authenticate']);
 
 Route::get('galaxies', [GalaxiesController::class, 'index']);
 Route::post('galaxies', [GalaxiesController::class, 'store']);
+Route::put('galaxies/{id}', [GalaxiesController::class, 'update']);
 Route::delete('galaxies/{id}', [GalaxiesController::class, 'destroy']);
 
 Route::get('solar-systems', [SolarSystemsController::class, 'index']);
 Route::post('galaxies/{galaxyId}/solar-systems', [SolarSystemsController::class, 'store']);
+Route::put('solar-systems/{id}', [SolarSystemsController::class, 'update']);
 Route::delete('solar-systems/{id}', [SolarSystemsController::class, 'destroy']);
 
 Route::get('planets', [PlanetsController::class, 'index']);
 Route::post('galaxies/{galaxyId}/solar-systems/{solarSystemId}/planets', [PlanetsController::class, 'store']);
+Route::put('planets/{id}', [PlanetsController::class, 'update']);
 Route::delete('planets/{id}', [PlanetsController::class, 'destroy']);

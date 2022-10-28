@@ -35,6 +35,15 @@ class PlanetsController extends Controller
         return $data;
     }
 
+    public function update(Request $request, $id){
+        planets::find($id)->update([
+            'name' => $request->name,
+            'dimension' => $request->dimension,
+            'number_of_moons' => $request->number_of_moons,
+            'light_years_from_the_main_star' => $request->light_years_from_the_main_star
+        ]);
+    }
+
     public function destroy($id){
         planets::destroy($id);
     }
