@@ -49,6 +49,13 @@ class PlanetsController extends Controller
     }
 
     public function update(Request $request, $id){
+        $request->validate([
+            'name' => 'required|',
+            'dimension' => 'numeric',
+            'number_of_moons' => 'numeric',
+            'light_years_from_the_main_star' => 'numeric',
+        ]);
+        
         planets::find($id)->update([
             'name' => $request->name,
             'dimension' => $request->dimension,

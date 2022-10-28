@@ -45,6 +45,12 @@ class GalaxiesController extends Controller
     }
 
     public function update(Request $request, $id){
+        $request->validate([
+            'name' => 'required|max:255|string',
+            'dimension' => 'numeric',
+            'number_of_solar_systems' => 'numeric',
+        ]);
+
         galaxies::find($id)->update([
             'name' => $request->name,
             'dimension' => $request->dimension,
